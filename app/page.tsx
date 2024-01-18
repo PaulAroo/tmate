@@ -1,3 +1,13 @@
+import { ModeToggle } from "@/components/ModeToggle"
+
 export default function Home() {
-	return <main>Task Management</main>
+	return (
+		<>
+			<nav className="flex justify-between">
+				<h1>Task Management</h1>
+				<ModeToggle />
+			</nav>
+			<main></main>
+		</>
+	)
 }
