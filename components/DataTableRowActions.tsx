@@ -1,9 +1,9 @@
 "use client"
 
-import { DotsHorizontalIcon } from "@radix-ui/react-icons"
+import { useState } from "react"
 import { Row } from "@tanstack/react-table"
+import { DotsHorizontalIcon } from "@radix-ui/react-icons"
 
-import { Button } from "@/components/ui/button"
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -12,6 +12,8 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Task } from "@/lib/types"
+import { EditTask } from "./EditTask"
+import { Button } from "@/components/ui/button"
 
 interface DataTableRowActionsProps<TData> {
 	row: Row<TData>
@@ -22,23 +24,41 @@ export function DataTableRowActions<TData>({
 }: DataTableRowActionsProps<TData>) {
 	const task = row.original as Task
 
-	return (
-		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
-				<Button
-					variant="ghost"
-					className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
-				>
-					<DotsHorizontalIcon className="h-4 w-4" />
-					<span className="sr-only">Open menu</span>
-				</Button>
-			</DropdownMenuTrigger>
-			<DropdownMenuContent align="end" className="w-[160px]">
-				<DropdownMenuItem>Edit</DropdownMenuItem>
+	const [open, setOpen] = useState(false)
 
-				<DropdownMenuSeparator />
-				<DropdownMenuItem>Delete</DropdownMenuItem>
-			</DropdownMenuContent>
-		</DropdownMenu>
+	return (
+		<>
+			<DropdownMenu>
+				<DropdownMenuTrigger asChild>
+					<Button
+						variant="ghost"
+						className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
+					>
+						<DotsHorizontalIcon className="h-4 w-4" />
+						<span className="sr-only">Open menu</span>
+					</Button>
+				</DropdownMenuTrigger>
+				<DropdownMenuContent align="end" className="w-[100px]">
+					<DropdownMenuItem className="p-0">
+						<Button
+							variant="ghost"
+							className="justify-start py-0 px-2 w-full"
+							onClick={() => setOpen(true)}
+						>
+							Edit
+						</Button>
+					</DropdownMenuItem>
+					<DropdownMenuSeparator />
+					<DropdownMenuItem className="p-0">
+						<Button variant="ghost" className="justify-start py-0 px-2 w-full">
+							Delete
+						</Button>
+					</DropdownMenuItem>
+				</DropdownMenuContent>
+			</DropdownMenu>
+			{open ? (
+				<EditTask open={open} setOpen={setOpen} task={task} />
+			) : undefined}
+		</>
 	)
 }

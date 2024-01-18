@@ -5,7 +5,7 @@ import { DataTable } from "./DataTable"
 import { columns } from "./columns"
 import { AddTask } from "./AddTask"
 
-function TaskManager() {
+export function TaskManager() {
 	const tasks = useTaskStore((state) => state.tasks)
 
 	return (
@@ -18,5 +18,3 @@ function TaskManager() {
 		</section>
 	)
 }
-
-export default TaskManager

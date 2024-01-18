@@ -1,4 +1,4 @@
-import TaskManager from "@/components/TaskManager"
+import { TaskManager } from "@/components/TaskManager"
 import { ThemeToggle } from "@/components/ThemeToggle"
 
 export default function Home() {

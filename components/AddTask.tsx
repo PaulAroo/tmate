@@ -9,8 +9,8 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
 import { NewTaskForm } from "./NewTaskForm"
+import { Button } from "@/components/ui/button"
 
 export function AddTask() {
 	const [open, setOpen] = useState(false)

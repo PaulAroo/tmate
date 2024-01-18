@@ -17,6 +17,7 @@ interface UpdatedTaskDetails {
 	title: string
 	status: Status
 	due_date: Date
+	description: string
 }
 
 export type State = {

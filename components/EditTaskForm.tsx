@@ -15,13 +15,22 @@ import {
 	FormMessage,
 } from "@/components/ui/form"
 import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select"
+import {
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
 } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
+import { Task } from "@/lib/types"
 import { Textarea } from "./ui/textarea"
 import { useTaskStore } from "@/lib/store"
+import { statuses } from "@/lib/table-data"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -34,22 +43,30 @@ const formSchema = z.object({
 		message: "Please provide a valid description",
 	}),
 	due_date: z.date(),
+	status: z.enum(["PENDING", "IN_PROGRESS", "COMPLETED"]),
 })
 
-export function NewTaskForm({ closeDialog }: { closeDialog: () => void }) {
-	const addTask = useTaskStore((state) => state.addTask)
+export function EditTaskForm({
+	closeDialog,
+	task,
+}: {
+	closeDialog: () => void
+	task: Task
+}) {
+	const updateTask = useTaskStore((state) => state.updateTask)
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			title: "",
-			description: "",
-			due_date: new Date(Date.now()),
+			title: task.title,
+			description: task.description,
+			due_date: task.due_date,
+			status: task.status,
 		},
 	})
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
-		addTask(values)
+		updateTask(task.id, values)
 		closeDialog()
 	}
 
@@ -125,8 +142,32 @@ export function NewTaskForm({ closeDialog }: { closeDialog: () => void }) {
 						</FormItem>
 					)}
 				/>
+				<FormField
+					control={form.control}
+					name="status"
+					render={({ field }) => (
+						<FormItem className="w-fit">
+							<FormLabel>Status</FormLabel>
+							<Select onValueChange={field.onChange} defaultValue={field.value}>
+								<FormControl>
+									<SelectTrigger>
+										<SelectValue placeholder="" />
+									</SelectTrigger>
+								</FormControl>
+								<SelectContent>
+									{statuses.map((s) => (
+										<SelectItem key={s.label} value={s.value}>
+											{s.label}
+										</SelectItem>
+									))}
+								</SelectContent>
+							</Select>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
 				<Button type="submit" className="mt-4 justify-self-end">
-					Add
+					Save
 				</Button>
 			</form>
 		</Form>
