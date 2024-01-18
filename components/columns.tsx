@@ -1,14 +1,11 @@
 "use client"
 
+import { format } from "date-fns"
 import { ColumnDef } from "@tanstack/react-table"
 
 import { Task } from "@/lib/types"
-import { format } from "date-fns"
-import {
-	CircleIcon,
-	StopwatchIcon,
-	CheckCircledIcon,
-} from "@radix-ui/react-icons"
+import { statuses } from "@/lib/table-data"
+import { DataTableRowActions } from "./DataTableRowActions"
 
 export const columns: ColumnDef<Task>[] = [
 	{
@@ -75,22 +72,8 @@ export const columns: ColumnDef<Task>[] = [
 			return value.includes(row.getValue(id))
 		},
 	},
-]
-
-export const statuses = [
 	{
-		value: "PENDING",
-		label: "Pending",
-		icon: CircleIcon,
-	},
-	{
-		value: "IN_PROGRESS",
-		label: "In Progress",
-		icon: StopwatchIcon,
-	},
-	{
-		value: "COMPLETED",
-		label: "Completed",
-		icon: CheckCircledIcon,
+		id: "actions",
+		cell: ({ row }) => <DataTableRowActions row={row} />,
 	},
 ]
