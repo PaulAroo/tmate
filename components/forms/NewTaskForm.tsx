@@ -20,7 +20,7 @@ import {
 	PopoverTrigger,
 } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
-import { Textarea } from "./ui/textarea"
+import { Textarea } from "../ui/textarea"
 import { useTaskStore } from "@/lib/store"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"

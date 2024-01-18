@@ -7,8 +7,7 @@ import {
 	DialogTitle,
 } from "@/components/ui/dialog"
 import { Task } from "@/lib/types"
-import { NewTaskForm } from "./NewTaskForm"
-import { EditTaskForm } from "./EditTaskForm"
+import { EditTaskForm } from "./forms/EditTaskForm"
 
 export function EditTask({
 	open,
