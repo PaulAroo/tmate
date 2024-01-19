@@ -49,7 +49,7 @@ export function DataTable<TData, TValue>({
 			<DataTableToolbar table={table} />
 			<div className="rounded-md border">
 				<Table>
-					<TableHeader>
+					<TableHeader className="bg-muted">
 						{table.getHeaderGroups().map((headerGroup) => (
 							<TableRow key={headerGroup.id}>
 								{headerGroup.headers.map((header) => {
@@ -72,7 +72,7 @@ export function DataTable<TData, TValue>({
 							table.getRowModel().rows.map((row) => (
 								<TableRow key={row.id}>
 									{row.getVisibleCells().map((cell) => (
-										<TableCell key={cell.id}>
+										<TableCell key={cell.id} className="p-1">
 											{flexRender(
 												cell.column.columnDef.cell,
 												cell.getContext()

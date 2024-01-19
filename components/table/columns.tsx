@@ -4,6 +4,7 @@ import { format } from "date-fns"
 import { ColumnDef } from "@tanstack/react-table"
 
 import { Task } from "@/lib/types"
+import { TaskPreview } from "./TaskPreview"
 import { statuses } from "@/lib/table-data"
 import { DataTableRowActions } from "./DataTableRowActions"
 
@@ -11,15 +12,7 @@ export const columns: ColumnDef<Task>[] = [
 	{
 		accessorKey: "title",
 		header: "Title",
-		cell: ({ row }) => {
-			return (
-				<div className="flex space-x-2">
-					<span className="max-w-[500px] truncate font-medium">
-						{row.getValue("title")}
-					</span>
-				</div>
-			)
-		},
+		cell: ({ row }) => <TaskPreview row={row} />,
 	},
 	{
 		accessorKey: "description",

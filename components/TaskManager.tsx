@@ -2,8 +2,8 @@
 
 import { useEffect } from "react"
 
-import { columns } from "./columns"
-import { DataTable } from "./DataTable"
+import { columns } from "./table/columns"
+import { DataTable } from "./table/DataTable"
 import { useTaskStore } from "@/lib/store"
 
 export function TaskManager() {
