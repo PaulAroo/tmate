@@ -62,7 +62,7 @@ export function EditTaskForm({
 		defaultValues: {
 			title: task.title,
 			description: task.description,
-			due_date: task.due_date,
+			due_date: new Date(task.due_date),
 			status: task.status,
 		},
 	})
