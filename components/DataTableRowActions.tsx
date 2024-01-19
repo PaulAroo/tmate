@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Task } from "@/lib/types"
 import { EditTask } from "./EditTask"
+import { useTaskStore } from "@/lib/store"
 import { Button } from "@/components/ui/button"
 
 interface DataTableRowActionsProps<TData> {
@@ -23,6 +24,7 @@ export function DataTableRowActions<TData>({
 	row,
 }: DataTableRowActionsProps<TData>) {
 	const task = row.original as Task
+	const deleteTask = useTaskStore((state) => state.deleteTask)
 
 	const [open, setOpen] = useState(false)
 
@@ -50,7 +52,11 @@ export function DataTableRowActions<TData>({
 					</DropdownMenuItem>
 					<DropdownMenuSeparator />
 					<DropdownMenuItem className="p-0">
-						<Button variant="ghost" className="justify-start py-0 px-2 w-full">
+						<Button
+							variant="ghost"
+							className="justify-start py-0 px-2 w-full"
+							onClick={() => deleteTask(task.id)}
+						>
 							Delete
 						</Button>
 					</DropdownMenuItem>

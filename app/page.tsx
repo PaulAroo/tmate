@@ -1,13 +1,12 @@
 import { TaskManager } from "@/components/TaskManager"
-import { ThemeToggle } from "@/components/ThemeToggle"
+import Navbar from "@/components/Navbar"
+import Header from "@/components/Header"
 
 export default function Home() {
 	return (
 		<div className="container">
-			<nav className="flex items-center justify-between py-6">
-				<h1 className="text-2xl">Task Manager</h1>
-				<ThemeToggle />
-			</nav>
+			<Navbar />
+			<Header />
 			<TaskManager />
 		</div>
 	)

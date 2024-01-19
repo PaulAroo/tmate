@@ -1,14 +1,11 @@
 import type { Metadata } from "next"
-import { Nunito } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/ThemeProvider"
 
-const nunito = Nunito({ subsets: ["latin"] })
-
 export const metadata: Metadata = {
-	title: "TMate",
-	description: "task management dashboard",
+	title: "TMateAI",
+	description: "Task management dashboard",
 }
 
 export default function RootLayout({
@@ -18,7 +15,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className={nunito.className}>
+			<body>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="dark"

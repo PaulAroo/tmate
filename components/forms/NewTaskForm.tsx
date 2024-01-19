@@ -1,7 +1,7 @@
 "use client"
 
 import * as z from "zod"
-import { format } from "date-fns"
+import { format, previousDay } from "date-fns"
 import { useForm } from "react-hook-form"
 import { CalendarIcon } from "lucide-react"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -38,13 +38,15 @@ const formSchema = z.object({
 
 export function NewTaskForm({ closeDialog }: { closeDialog: () => void }) {
 	const addTask = useTaskStore((state) => state.addTask)
+	const yesterday = new Date()
+	yesterday.setDate(yesterday.getDate() - 1)
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
 			title: "",
 			description: "",
-			due_date: new Date(Date.now()),
+			due_date: new Date(),
 		},
 	})
 
@@ -57,8 +59,8 @@ export function NewTaskForm({ closeDialog }: { closeDialog: () => void }) {
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 grid">
 				<FormField
-					control={form.control}
 					name="title"
+					control={form.control}
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Title</FormLabel>
@@ -70,8 +72,8 @@ export function NewTaskForm({ closeDialog }: { closeDialog: () => void }) {
 					)}
 				/>
 				<FormField
-					control={form.control}
 					name="description"
+					control={form.control}
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Description</FormLabel>
@@ -87,8 +89,8 @@ export function NewTaskForm({ closeDialog }: { closeDialog: () => void }) {
 					)}
 				/>
 				<FormField
-					control={form.control}
 					name="due_date"
+					control={form.control}
 					render={({ field }) => (
 						<FormItem className="flex flex-col">
 							<FormLabel>Due Date</FormLabel>
@@ -116,7 +118,7 @@ export function NewTaskForm({ closeDialog }: { closeDialog: () => void }) {
 										mode="single"
 										selected={field.value}
 										onSelect={field.onChange}
-										disabled={(date) => date < new Date("1900-01-01")}
+										disabled={(date) => date < yesterday}
 										initialFocus
 									/>
 								</PopoverContent>
