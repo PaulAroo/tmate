@@ -24,6 +24,11 @@ export const useTaskStore = create<State & Actions>()(
 					),
 				}))
 			},
+			deleteTask: (id) => {
+				set((state) => ({
+					tasks: state.tasks.filter((task) => task.id !== id),
+				}))
+			},
 		}),
 		{ name: "task-store", skipHydration: true }
 	)

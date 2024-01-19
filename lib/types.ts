@@ -13,6 +13,7 @@ interface AddedTaskDetails {
 	description: string
 	due_date: Date
 }
+
 interface UpdatedTaskDetails {
 	title: string
 	status: Status
@@ -25,6 +26,7 @@ export type State = {
 }
 
 export type Actions = {
+	deleteTask: (id: string) => void
 	addTask: (details: AddedTaskDetails) => void
 	updateTask: (id: string, details: UpdatedTaskDetails) => void
 }
