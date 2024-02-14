@@ -2,6 +2,7 @@
 
 import { useEffect } from "react"
 
+import Spinner from "./Spinner"
 import { columns } from "./table/columns"
 import { DataTable } from "./table/DataTable"
 import { useTaskStore } from "@/lib/store"
@@ -15,7 +16,7 @@ export function TaskManager() {
 	}, [])
 
 	if (!hasHydrated) {
-		return <p>Loading...</p>
+		return <Spinner />
 	}
 
 	return (
