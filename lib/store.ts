@@ -10,6 +10,12 @@ export const useTaskStore = create<State & Actions>()(
 	persist(
 		(set) => ({
 			tasks: seedTasks,
+			hasHydrated: false,
+			setHasHydrated: (state) => {
+				set({
+					hasHydrated: state,
+				})
+			},
 			addTask: (details) => {
 				set((state) => ({
 					tasks: [
@@ -35,6 +41,9 @@ export const useTaskStore = create<State & Actions>()(
 			name: "task-store",
 			skipHydration: true,
 			storage: createJSONStorage(() => storage),
+			onRehydrateStorage: (state) => {
+				state.setHasHydrated(true)
+			},
 		}
 	)
 )

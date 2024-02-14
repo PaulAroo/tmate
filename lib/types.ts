@@ -22,11 +22,13 @@ interface UpdatedTaskDetails {
 }
 
 export type State = {
+	hasHydrated: boolean
 	tasks: Task[]
 }
 
 export type Actions = {
 	deleteTask: (id: string) => void
 	addTask: (details: AddedTaskDetails) => void
+	setHasHydrated: (has_hydrated: boolean) => void
 	updateTask: (id: string, details: UpdatedTaskDetails) => void
 }
