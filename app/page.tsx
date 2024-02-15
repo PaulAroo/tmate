@@ -5,7 +5,7 @@ import { TaskManager } from "@/components/TaskManager"
 
 export default function Home() {
 	return (
-		<div className="container">
+		<div className="container min-h-dvh">
 			<Navbar />
 			<Header />
 			<TaskManager />
