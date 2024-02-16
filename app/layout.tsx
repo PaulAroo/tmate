@@ -4,7 +4,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/ThemeProvider"
 
 export const metadata: Metadata = {
-	title: "TMateAI",
+	title: "TMate",
 	description: "Task management dashboard",
 }
 
