@@ -12,6 +12,7 @@ export const columns: ColumnDef<Task>[] = [
 	{
 		accessorKey: "title",
 		header: "Title",
+		enableHiding: false,
 		cell: ({ row }) => <TaskPreview row={row} />,
 	},
 	{
@@ -53,9 +54,12 @@ export const columns: ColumnDef<Task>[] = [
 			}
 
 			return (
-				<div className="flex w-[100px] items-center">
+				<div className="flex w-[100px] items-center text-muted-foreground">
 					{status.icon && (
-						<status.icon className="mr-2 h-4 w-4 text-muted-foreground" />
+						<status.icon
+							className="mr-2 h-4 w-4"
+							style={{ color: status.color }}
+						/>
 					)}
 					<span>{status.label}</span>
 				</div>

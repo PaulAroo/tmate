@@ -7,6 +7,7 @@ import { AddTask } from "./AddTask"
 import { statuses } from "@/lib/table-data"
 import { Button } from "@/components/ui/button"
 import { DataTableFacetedFilter } from "./DataTableFacetedFilter"
+import { DataTableViewOptions } from "./DataTableViewOptions"
 
 interface DataTableToolbarProps<TData> {
 	table: Table<TData>
@@ -27,7 +28,7 @@ export function DataTableToolbar<TData>({
 						options={statuses}
 					/>
 				)}
-
+				<DataTableViewOptions table={table} />
 				{isFiltered && (
 					<Button
 						variant="ghost"
