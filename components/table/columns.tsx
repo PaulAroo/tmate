@@ -13,6 +13,7 @@ export const columns: ColumnDef<Task>[] = [
 		accessorKey: "title",
 		header: "Title",
 		cell: ({ row }) => <TaskPreview row={row} />,
+		enableHiding: false,
 	},
 	{
 		accessorKey: "description",
