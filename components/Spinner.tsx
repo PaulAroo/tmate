@@ -1,6 +1,6 @@
 export default function Spinner() {
 	return (
-		<div role="status" className="grid place-items-center min-h-[60vh]">
+		<div role="status" className="grid place-items-center min-h-[60dvh]">
 			<svg
 				aria-hidden="true"
 				className="inline w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-brand"
