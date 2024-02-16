@@ -4,8 +4,8 @@ import { useEffect } from "react"
 
 import Spinner from "./Spinner"
 import { columns } from "./table/columns"
-import { DataTable } from "./table/DataTable"
 import { useTaskStore } from "@/lib/store"
+import { DataTable } from "./table/DataTable"
 
 export function TaskManager() {
 	const tasks = useTaskStore((state) => state.tasks)
