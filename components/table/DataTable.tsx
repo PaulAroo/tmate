@@ -42,6 +42,11 @@ export function DataTable<TData, TValue>({
 		getCoreRowModel: getCoreRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
 		getFacetedUniqueValues: getFacetedUniqueValues(),
+		initialState: {
+			columnVisibility: {
+				description: false,
+			},
+		},
 	})
 
 	return (
