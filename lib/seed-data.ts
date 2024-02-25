@@ -1,4 +1,4 @@
-import { Task } from "./types"
+import { Task } from "../store/types"
 import { v4 as uuid } from "uuid"
 
 export const seedTasks: Array<Task> = [

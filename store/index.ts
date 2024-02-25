@@ -2,8 +2,8 @@ import { create } from "zustand"
 import { v4 as uuid } from "uuid"
 import { createJSONStorage, persist } from "zustand/middleware"
 
-import { storage } from "./storage"
-import { seedTasks } from "./seed-data"
+import { storage } from "../lib/storage"
+import { seedTasks } from "../lib/seed-data"
 import { Actions, State } from "./types"
 
 export const useTaskStore = create<State & Actions>()(

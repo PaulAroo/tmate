@@ -27,9 +27,9 @@ import {
 	PopoverTrigger,
 } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
-import { Task } from "@/lib/types"
+import { Task } from "@/store/types"
+import { useTaskStore } from "@/store"
 import { Textarea } from "../ui/textarea"
-import { useTaskStore } from "@/lib/store"
 import { statuses } from "@/lib/table-data"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"

@@ -3,8 +3,8 @@
 import { useEffect } from "react"
 
 import Spinner from "./Spinner"
+import { useTaskStore } from "@/store"
 import { columns } from "./table/columns"
-import { useTaskStore } from "@/lib/store"
 import { DataTable } from "./table/DataTable"
 
 export function TaskManager() {

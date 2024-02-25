@@ -3,7 +3,7 @@
 import { format } from "date-fns"
 import { ColumnDef } from "@tanstack/react-table"
 
-import { Task } from "@/lib/types"
+import { Task } from "@/store/types"
 import { TaskPreview } from "./TaskPreview"
 import { statuses } from "@/lib/table-data"
 import { DataTableRowActions } from "./DataTableRowActions"

@@ -11,9 +11,9 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Task } from "@/lib/types"
+import { Task } from "@/store/types"
 import { EditTask } from "./EditTask"
-import { useTaskStore } from "@/lib/store"
+import { useTaskStore } from "@/store"
 import { Button } from "@/components/ui/button"
 
 interface DataTableRowActionsProps<TData> {

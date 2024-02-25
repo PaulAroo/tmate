@@ -1,7 +1,7 @@
 import { format } from "date-fns"
 import { Row } from "@tanstack/react-table"
 
-import { Task } from "@/lib/types"
+import { Task } from "@/store/types"
 import { statuses } from "@/lib/table-data"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog"
