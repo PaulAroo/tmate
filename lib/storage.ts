@@ -3,7 +3,7 @@ import { StateStorage } from "zustand/middleware"
 
 localForage.config({
 	name: "tmate",
-	storeName: "task_store_1",
+	storeName: "task_store_2",
 	description: "store a list of tasks",
 })
 

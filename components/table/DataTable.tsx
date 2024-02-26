@@ -42,11 +42,12 @@ export function DataTable<TData, TValue>({
 		getCoreRowModel: getCoreRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
 		getFacetedUniqueValues: getFacetedUniqueValues(),
-		initialState: {
-			columnVisibility: {
-				description: false,
-			},
-		},
+		// TODO - figure out a way to make this option persist
+		// initialState: {
+		// 	columnVisibility: {
+		// 		description: false,
+		// 	},
+		// },
 	})
 
 	return (
@@ -92,7 +93,7 @@ export function DataTable<TData, TValue>({
 									colSpan={columns.length}
 									className="h-24 text-center"
 								>
-									No results.
+									No Tasks.
 								</TableCell>
 							</TableRow>
 						)}
