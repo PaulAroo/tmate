@@ -40,6 +40,7 @@ export const columns: ColumnDef<Task>[] = [
 				</div>
 			)
 		},
+		sortingFn: "datetime",
 	},
 	{
 		accessorKey: "status",

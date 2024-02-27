@@ -7,7 +7,7 @@ export const seedTasks: Array<Task> = [
 		title: "Delete me",
 		description: "task description goes here",
 		status: "PENDING",
-		due_date: new Date(Date.now() + 1000000000),
+		due_date: new Date(Date.now() + 2000000000),
 	},
 	{
 		id: uuid(),

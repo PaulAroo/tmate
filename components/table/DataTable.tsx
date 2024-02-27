@@ -9,6 +9,8 @@ import {
 	ColumnFiltersState,
 	getFilteredRowModel,
 	getFacetedUniqueValues,
+	getSortedRowModel,
+	SortingState,
 } from "@tanstack/react-table"
 
 import {
@@ -30,16 +32,24 @@ export function DataTable<TData, TValue>({
 	columns,
 	data,
 }: DataTableProps<TData, TValue>) {
+	const [sorting] = useState<SortingState>([
+		{
+			id: "due_date",
+			desc: false,
+		},
+	])
 	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
 
 	const table = useReactTable({
 		data,
 		columns,
 		state: {
+			sorting,
 			columnFilters,
 		},
 		onColumnFiltersChange: setColumnFilters,
 		getCoreRowModel: getCoreRowModel(),
+		getSortedRowModel: getSortedRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
 		getFacetedUniqueValues: getFacetedUniqueValues(),
 		// TODO - figure out a way to make this option persist
