@@ -1,6 +1,7 @@
 "use client"
 
 import * as z from "zod"
+import { useState } from "react"
 import { format } from "date-fns"
 import { useForm } from "react-hook-form"
 import { CalendarIcon } from "lucide-react"
@@ -57,6 +58,8 @@ export function EditTaskForm({
 	const yesterday = new Date()
 	yesterday.setDate(yesterday.getDate() - 1)
 
+	const [isEditing, setIsEditing] = useState(false)
+
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -77,6 +80,7 @@ export function EditTaskForm({
 			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 grid">
 				<FormField
 					name="title"
+					disabled={!isEditing}
 					control={form.control}
 					render={({ field }) => (
 						<FormItem>
@@ -90,6 +94,7 @@ export function EditTaskForm({
 				/>
 				<FormField
 					name="description"
+					disabled={!isEditing}
 					control={form.control}
 					render={({ field }) => (
 						<FormItem>
@@ -115,6 +120,7 @@ export function EditTaskForm({
 								<PopoverTrigger asChild>
 									<FormControl>
 										<Button
+											disabled={!isEditing}
 											variant={"outline"}
 											className={cn(
 												"w-[240px] pl-3 text-left font-normal",
@@ -150,7 +156,11 @@ export function EditTaskForm({
 					render={({ field }) => (
 						<FormItem className="w-fit">
 							<FormLabel>Status</FormLabel>
-							<Select onValueChange={field.onChange} defaultValue={field.value}>
+							<Select
+								disabled={!isEditing}
+								onValueChange={field.onChange}
+								defaultValue={field.value}
+							>
 								<FormControl>
 									<SelectTrigger>
 										<SelectValue placeholder="" />
@@ -168,9 +178,18 @@ export function EditTaskForm({
 						</FormItem>
 					)}
 				/>
-				<Button type="submit" className="mt-4 justify-self-end">
-					Save
-				</Button>
+				<div className="mt-4 justify-self-end space-x-4">
+					<Button
+						className=""
+						disabled={isEditing}
+						onClick={() => setIsEditing(true)}
+					>
+						Edit
+					</Button>
+					<Button type="submit" className="" disabled={!isEditing}>
+						Save
+					</Button>
+				</div>
 			</form>
 		</Form>
 	)

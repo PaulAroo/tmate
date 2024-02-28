@@ -1,36 +1,33 @@
-import { format } from "date-fns"
+"use client"
+
+import { useState } from "react"
 import { Row } from "@tanstack/react-table"
 
+import {
+	Dialog,
+	DialogTitle,
+	DialogHeader,
+	DialogContent,
+	DialogTrigger,
+} from "@/components/ui/dialog"
 import { Task } from "@/store/types"
-import { statuses } from "@/lib/table-data"
-import { Badge } from "@/components/ui/badge"
-import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog"
+import { EditTaskForm } from "../forms/EditTaskForm"
 
 export function TaskPreview({ row }: { row: Row<Task> }) {
-	const status = statuses.find(
-		(status) => status.value === row.getValue("status")
-	)!
+	const [open, setOpen] = useState(false)
 
 	return (
-		<Dialog>
+		<Dialog open={open} onOpenChange={setOpen}>
 			<DialogTrigger asChild>
 				<button className="max-w-[500px] truncate font-medium p-4">
 					{row.getValue("title")}
 				</button>
 			</DialogTrigger>
 			<DialogContent className="pt-10">
-				<h3 className="text-2xl">{row.original.title}</h3>
-				<p className="text-muted-foreground">{row.original.description}</p>
-				<div className="flex items-center gap-2 text-muted-foreground">
-					<p className="text-sm">Due Date:</p>
-					<p>{format(row.original.due_date, "PPPP")}</p>
-				</div>
-				<Badge className="w-fit ml-auto">
-					{status.icon && (
-						<status.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-					)}
-					<span>{status.label}</span>
-				</Badge>
+				<DialogHeader>
+					<DialogTitle className="text-left">Preview</DialogTitle>
+				</DialogHeader>
+				<EditTaskForm closeDialog={() => setOpen(false)} task={row.original} />
 			</DialogContent>
 		</Dialog>
 	)
