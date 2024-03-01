@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ThemeProvider"
 
 export const metadata: Metadata = {
 	title: "TMate",
+	manifest: "/manifest.json",
 	description: "Task management dashboard",
 }
 
