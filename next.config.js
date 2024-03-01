@@ -2,12 +2,12 @@
 
 const withPWA = require("@ducanh2912/next-pwa").default({
 	dest: "public",
-	disable: false,
 	cacheOnFrontEndNav: true,
 	aggressiveFrontEndNavCaching: true,
 	workboxOptions: {
 		disableDevLogs: true,
 	},
+	disable: process.env.NODE_ENV === "development",
 })
 
 module.exports = withPWA({})
